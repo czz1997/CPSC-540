@@ -1,0 +1,30 @@
+name: resnet152
+
+dataset:
+    train_prefix: './datasets/VPRC2023'
+    train_list: './datasets/VPRC2023/gallery.csv'
+    test_prefix: './datasets/VPRC2023'
+    test_list: './datasets/VPRC2023/queries.csv'
+    seed: 123
+    input_size: 224
+    batch_size: 32
+    augmentation:
+        epoch: 1
+        methods: 'none'
+        rotate:
+            degree: 15
+        perspective:
+            distortion_scale: 0.8
+            p: 0.25
+        crop:
+            scale: [0.08, 1.0]  # torchvision default
+        color:
+            brightness: 0.2
+            contrast: 0.2
+            saturation: 0.2
+            hue: 0.2
+
+    num_workers: 4
+
+model:
+    arch: 'resnet152'
