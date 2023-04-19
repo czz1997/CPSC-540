@@ -1,4 +1,4 @@
-name: resnet18_aug
+name: pca
 
 dataset:
     train_prefix: './datasets/VPRC2023'
@@ -6,25 +6,25 @@ dataset:
     test_prefix: './datasets/VPRC2023'
     test_list: './datasets/VPRC2023/queries.csv'
     seed: 123
-    input_size: 224
+    input_size: 128
     batch_size: 64
     augmentation:
-        epoch: 8
-        methods: 'rotate, crop, flip, color'
+        epoch: 1
+        methods: 'none'
         rotate:
-            degree: 30
+            degree: 15
         perspective:
             distortion_scale: 0.8
-            p: 0.33
+            p: 0.25
         crop:
-            scale: [0.8, 1.0]
+            scale: [0.08, 1.0]  # torchvision default
         color:
-            brightness: 0.5
-            contrast: 0.5
-            saturation: 0.5
-            hue: 0.5
+            brightness: 0.2
+            contrast: 0.2
+            saturation: 0.2
+            hue: 0.2
 
     num_workers: 4
 
 model:
-    arch: 'resnet18'
+    arch: 'PCA'
